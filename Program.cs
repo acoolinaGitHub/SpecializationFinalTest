@@ -9,7 +9,7 @@ string[] arr = str.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 string[] Filter(string[] array)    // method: get new array with items >= 3
 {
     int count = 0;
-    foreach (var item in array)   // count length of new filtered array
+    foreach (var item in array)   // count length of filtered array
     {
         if ((item.Length < 4) && (item.Length > 0))
         {
@@ -19,7 +19,7 @@ string[] Filter(string[] array)    // method: get new array with items >= 3
 
     string[] newArray = new string[count];
     int j = 0;
-    for (int i = 0; i < array.Length; i++)   // get filtered array
+    for (int i = 0; i < array.Length; i++)   // get new filtered array
     {
         if ((array[i].Length < 4) && (array[i].Length > 0))
         {
