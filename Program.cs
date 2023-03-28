@@ -4,22 +4,47 @@ Console.Clear();
 Console.Write("Please enter string separated by spaces --> ");
 string str = Console.ReadLine();
 
-string[] arr = str.Split(' ');
+string[] arr = str.Split(' ', StringSplitOptions.RemoveEmptyEntries); 
 
-string[] newArr = new string[arr.Length];
-
-for (int i = 0; i < arr.Length; i++)
+string[] Filter(string[] array)    // method: get new array with items >= 3
 {
-    if ((arr[i].Length < 3) || (arr[i].Length == 3))
+    int count = 0;
+    foreach (var item in array)   // count length of new filtered array
     {
-        newArr[i] = arr[i];
-    }    
+        if ((item.Length < 4) && (item.Length > 0))
+        {
+            count++;
+        }        
+    }
+
+    string[] newArray = new string[count];
+    int j = 0;
+    for (int i = 0; i < array.Length; i++)   // get filtered array
+    {
+        if ((array[i].Length < 4) && (array[i].Length > 0))
+        {
+            newArray[j] = array[i];
+            j++;
+        }           
+    }
+    return newArray;
 }
 
-Console.Write("[");
-foreach (var item in newArr)
+void PrintArray(string[] array)      //method: print of array (without comma at the end) 
 {
-    Console.Write($"{item} ");
+    Console.Write("New array: [");
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.Write(array[i]);
+        if (i < array.Length-1)
+        {
+            Console.Write(",");
+        }
+    }
+    Console.Write("]");
+    Console.WriteLine();
 }
-Console.Write("]");
+
+string[] newArr = Filter(arr);
+PrintArray(newArr);
 
